@@ -21,7 +21,7 @@
                      for (i = 0; i < Max_possible_attempts; i++)
                      {   
                             
-                            Console.Write(Number_to_guess);
+                            //Console.Write(Number_to_guess);
 
                             Console.Write(" enter your guess value : ");
 
