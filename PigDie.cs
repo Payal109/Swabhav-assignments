@@ -56,7 +56,7 @@ namespace PigDieGame
              }
             } while (totalScore < 20);
 
-            Console.WriteLine($"you finished in {numberOfTurns}");
+            Console.WriteLine($"you finished in {numberOfTurns} turns ");
         }
     }
 }
