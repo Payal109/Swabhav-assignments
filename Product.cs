@@ -2,23 +2,57 @@
 {
     internal class Product
     {
-        public int Id { get; set; }
+        private int id;
+        public int Id
+        {
+            get { return id; }
+            set
+            { if (value < 0)
+                    throw new ArgumentOutOfRangeException("value cant be negavtive");
+            
+            else  id = value; 
+            }
+
+            }
+        
+       
         public string Name { get; set; }
-        public double Price { get; set; }
-        public int DiscountPercentage {  get; set; }
+
+        private double price;
+        public double Price
+        {
+            get { return price; }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("value of price cant be negavtive");
+                else price = value;
+            }
+        }
+        private double discountpercentage;
+        public double DiscountPercentage
+        {
+            get { return discountpercentage; }
+            set
+            {
+                if (value >= 100)
+                    throw new ArgumentOutOfRangeException("value of discount is unacceptable");
+                else discountpercentage = value;
+            }
+        }
 
         public Product() { }
-        public Product (int id, string name, double price, int discountPercentage)
+        public Product(int id, string name, double price, double discountPercentage)
         {
-            Id = id;
-            Name = name;
+            this.Id = id;
+            this.Name = name;
             Price = price;
             DiscountPercentage = discountPercentage;
-        } 
+        }
 
-        public double ReturnCost( double Price, int DiscountPercentage)
+        public double ReturnCost( double Price, double DiscountPercentage)
         {  
-            double FinalPrice = Price - (Price * DiscountPercentage/100);
+            double FinalPrice = Price - (Price * (DiscountPercentage/100));
             return FinalPrice;
         }
         
@@ -38,12 +72,15 @@
             Product prod2 = new Product();
             prod2.Id = 2;
             prod2.Name = "Phone";
-            prod2.Price = 17000;
+            Console.WriteLine("enter price of product 2 ");
+            int pp = Convert.ToInt32(Console.ReadLine());
+            prod2.Price = pp;
+           
             prod2.DiscountPercentage = 20;
 
             double dis_price1 = prod1.ReturnCost(prod1.Price, prod1.DiscountPercentage);
 
-            double dis_price2 = prod2.ReturnCost(prod2.Price, prod2.DiscountPercentage);
+            double dis_price2 = prod2.ReturnCost(pp, prod2.DiscountPercentage);
 
 
             Console.WriteLine($" Product ID : {prod1.Id}");
