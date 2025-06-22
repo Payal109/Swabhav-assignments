@@ -14,19 +14,19 @@
             if (traf == TrafficLight.RED)   
 
             {
-                Console.WriteLine("Driver should stop!");
+                Console.Write("Driver should STOP!");
 
             }
             if (traf == TrafficLight.GREEN)
 
             {
-                Console.WriteLine("Driver should go!");
+                Console.Write("Driver should go!");
 
             }
             if (traf == TrafficLight.YELLOW)
 
             {
-                Console.WriteLine("Driver should speed up!");
+                Console.Write("Driver should speed up!");
 
             }
         }
@@ -39,6 +39,7 @@
             if (Enum.TryParse(input, out traf)) // tries parsing input of user to Enum type, if its successful it stores it in traf and executes the blocks below
             {
                 Signal sigobj = new Signal();
+                Console.Write($"Signal : {traf} ----> ");
                 sigobj.display(traf);
 
             }
